@@ -18,6 +18,41 @@ angular.module('RouteControllers', [])
         document.getElementById("previousPhotoBtnLg").disabled = true;
 
 
+
+
+
+                LocalUsers.fetch().then(function(results) {
+                    //*******************************************************************
+                    //DO I NEED TO USE SCOPE HERE AS I AM NOT PASSING VALUES TO TEMPLATE?
+                    var album = results.data;
+                    //*******************************************************************
+
+                    //To list all photos
+                    for (i=0; i<album.length; i++){
+                            console.log(album[i].place);                        
+                        for (j=0; j<album[i].photos.length; j++){
+                            console.log(album[i].photos[j].src);
+                        }
+                    }
+
+
+                        /*
+                        console.log($scope.registrationUser.username);                        
+                        if (entry.name == $scope.registrationUser.username){
+                            console.log("Name match on: " + entry.name + " and " + $scope.registrationUser.username);
+                        }
+                        if (entry.password == $scope.registrationUser.password){
+                            console.log("Password match on: " + entry.password + " and " + $scope.registrationUser.password);
+                        }
+                        */
+                        //else                        
+                        //    console.log("No match made");                            
+                });
+
+
+
+
+
         //create the Swanage gallery array
         swanageGallery = [{
                 src: "img/Swanage/Swanage1.jpg",

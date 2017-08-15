@@ -6,7 +6,7 @@ angular.module('UserStoreService', [])
 
         LocalUsers = {
             fetch: function(data) {
-               return $http.get('js/photos.json');
+              return $http.get('js/photos.json');
             }
         };
         return LocalUsers;
