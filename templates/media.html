@@ -1,0 +1,90 @@
+		<!-- HTML5 sematic markup -->
+		<main>
+			<section class="row">
+				<!-- HTML5 sematic markup -->
+				<header class="col-xs-12">		
+					<h1>Media Page</h1>
+					<p>This page presents photos taken, which can be viewed through the photo viewer, plus a video which can be played through the HTML5 embedded media player.</p>
+				</header>
+			</section>			
+	
+			<!-- Creating one row to hold the image viewer  -->
+			<section class="row">
+				<!-- The bootstrap entry below is required to pull text into bootstrap container (and keep it tidy) 
+			 	it also means that the text is 'normal' left paginated, rather than centralised                -->
+				<header class="col-xs-12">		
+					<h2>Photo Gallery Player:</h2>
+					<p>A selection of photos which can be viewed by location, when a photo is clicked it will enlarge and also show the photo caption.</p>
+				</header>	
+
+				<!-- Using the bootstrap text-center class to centralise all content in div -->
+				<div class="col-xs-12 text-center">		
+					<!-- Added to break up page a little -->
+
+					<div class="col-sm-6 col-sm-offset-3">		
+						<div class="mediaPageBackgrounds">
+
+						<figure>
+							<img id="myImg" src="img/initialPhotoViewerPic.jpg" alt="Cover Picture pre photo location selection">
+						</figure>
+						<!-- Bespoke class added to apply margin around bootstrap buttons -->
+						<div class="btn-space">  
+							<button id="previousPhotoBtnLg" class="btn btn-default hidden-xs hidden-sm">Previous Photo</button>	
+							<button id="nextPhotoBtnLg"  class="btn btn-default hidden-xs hidden-sm">Next Photo</button>
+							<button id="previousPhotoBtnSm" class="glyphicon glyphicon-chevron-left hidden-md hidden-lg"></button>	
+							<button id="nextPhotoBtnSm" class="glyphicon glyphicon-chevron-right hidden-md hidden-lg"></button>
+						</div>
+						<!-- Bespoke class added to apply margin around bootstrap buttons -->
+
+						<div class="btn-space">
+							<button id="fleetBtnLg" class="btn btn-default hidden-xs hidden-sm">Fleet Photos</button>
+							<button id="swanageBtnLg" class="btn btn-default hidden-xs hidden-sm" ng-click="$scope.swanageBtnFunc()">Swanage Photos</button>	
+							<button id="caesarsCampBtnLg" class="btn btn-default hidden-xs hidden-sm">Caesars Camp</button>	
+							<!-- Span used to apply CSS font changes for small devices to each options displayed name -->
+							<!-- Radio buttons for small device use -->
+							<label class="radio-inline hidden-md hidden-lg">
+							<input type="radio" name="optradio" id="fleetBtnSm"><span class="photoViewerRadButn">Fleet</span></label>
+
+							<label class="radio-inline hidden-md hidden-lg">
+							<input type="radio" name="optradio" id="swanageBtnSm"><span class="photoViewerRadButn">Swanage</span></label>
+
+							<label class="radio-inline hidden-md hidden-lg">
+							<input type="radio" name="optradio" id="caesarsBtnSm"><span class="photoViewerRadButn">Caesars</span></label> 
+						</div>
+					</div>
+					<!-- The (Initially Hidden) Modal -->
+					<div id="myModal" class="modal">
+	  					<span id="modalClose" class="close">x</span>
+	  					<!-- src needed below for W3C validation but causes page load error (can't find source) so put in initialPic but it is never seen as JS controls image displayed -->
+  						<img class="modal-content" id="currentPhoto" src="img/initialPhotoViewerPic.jpg" alt="Modal used to display photos">
+  						<div id="caption"></div>
+					</div>
+				</div>
+			</div>	
+			</section>
+			
+			<section class="row">
+				<!-- The bootstrap entry below is required to pull text into bootstrap container (and keep it tidy) -->
+				<header class="col-xs-12">		
+					<h2>Video Player:</h2>		
+					<p>A scene with no wind yet it was raining leaves!</p>
+				</header>
+				<!-- Using the bootstrap text-center class to centralise all content in div -->
+				<div class="col-xs-12 text-center">	
+					<!-- Added to break up page a little -->	
+					<div class="col-xs-8 col-xs-offset-2">		
+						<div class="mediaPageBackgrounds test">
+							<video controls="controls">
+								<!-- Different encoding for different browsers -->
+								<source src="vid/Fleet_Pond_Leaves_MP4.mp4" type="video/mp4">	<!-- Chrome, Safari, IE -->
+								<source src="vid/Fleet_Pond_Leaves_OGV.ogv" type="video/ogv">	<!-- Firefox, Chrome, Opera -->
+								<source src="vid/Fleet_Pond_Leaves_WEBM.webm" type="video/webm">	<!-- Firefox, Chrome, Opera -->
+							</video>
+						</div>	
+					</div>	
+				</div>
+			</section>
+		</main>
+
+		<script type="text/javascript" src="js/mediaPageJS.js"></script>    
+    	<script src='js/photos.json'></script>  

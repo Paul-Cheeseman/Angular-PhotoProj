@@ -1,5 +1,44 @@
-<div>
-	<h1>{{title}}</h1>
-
-	<p>Cheeky bonus para!</p>
-</div>
+        <main>
+            <!-- Using Bootstrap to use
+                 one column when on xsmall device (phone) - Bootstrap is mobile first, so default value used
+                two columns when on small device (tablets)
+                two columns when on medium devices (laptops/desktops)
+            -->
+            <section class="row">
+                <!-- HTML5 sematic markup -->
+                <header class="col-sm-12">
+                    <h1 class="hidden-xs">Welcome to Paul Cheeseman's Photography Site</h1>             
+                    <h1 class="hidden-sm hidden-md hidden-lg">Paul Cheeseman's Photo's</h1>
+                    <p>Hi, welcome to my website, below I outline the purpose of it, what it contains, the aims of it and what technology was used in its creation, in essence it's based around my amateur photography, a sample of which you can see below:</p>
+                </header>
+            </section>
+            <!-- Start with x amount and hide and reduce size as gets smaller -->
+            
+            <section class="row">
+                <div class="col-sm-12 text-center">
+                    <h2>Selection of photos from my collection</h2>             
+                        <img class="picsOnHomePage" src="img/Fleet/FleetPond2.jpg" alt="Fleet: Bridge over pond">  
+                        <img class="picsOnHomePage hidden-xs" src="img/Fleet/FleetPond6.jpg" alt="Fleet: Pond at sunset with sun showing">  
+                        <img class="picsOnHomePage hidden-xs" src="img/Swanage/Swanage2.jpg" alt="Swanage: Island at Sunset no.1">      
+                        <img class="picsOnHomePage hidden-xs" src="img/CaesarsCamp/CaesarsCamp7.jpg" alt="Caesars Camp: High up with top of hill in shot">                  
+                </div>
+            </section>
+            <section class="row">
+                <div class="col-sm-6 col-md-3">
+                    <h2>Site Purpose:</h2>
+                    <p>The purpose of this website is to show some of the front-end skills I have been developing through the Full Stack Web Development course run by the Code Institute. It has the dual purpose of covering the examination requirements while also showing prospective employers what I am capable of.</p>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <h2>Site Content:</h2>
+                    <p>The main content is on the media page is based around a hobby of mine, which is landscape photography. It’s at an amateur level but hopefully some nice pictures none the less. There is a basic bio of my career and academic achievements in the profile page and a dummy contact me form in the contact page. The form will validate input, but it currently won’t send the information anywhere, so please don’t try to contact me though it.</p>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <h2>Site Aim:</h2>
+                    <p> My main aim has been to try and make the site as scaleable as possible. I wanted the site to look good and be useable through all possible viewing devices. Whilst there has only been a short time scale for me to complete this site (as I wish to progress with the rest of the course) I feel that I have achieved that main aim. I also wanted to implement some pure JavaScript into site and have achieved that with the the picture viewer and the additional validation I have put in for the contact me forms date field. I also wanted this site to be user friendly and believe that I have achieved that by implementing defensive programming in both the picture viewer and form input.</p>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <h2>Technology Used:</h2>
+                    <p>For layout I have used bootstrap, although it is not working as default on this site because I have deliberately overwritten some of the default settings to enable better scalability, an example of that is the scaling of text to suit the device being used. Also, while bootstrap also has default plug-ins/code, I wanted to illustrate some programming skills and as such did not use the bootstrap carousel, I created my own initially based on one from <a href="https://www.w3schools.com/bootstrap/bootstrap_modal.asp">w3schools</a>, but have heavily adapted it, as can be seen from the source JavaScript.</p>              
+                </div>
+            </section>
+        </main>

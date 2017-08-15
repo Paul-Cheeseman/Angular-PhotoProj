@@ -7,8 +7,18 @@ angular.module('PhotoApp').config(function($locationProvider, $routeProvider) {
 		templateUrl: 'templates/home.html',
 		controller: 'HomeController'
 	})
-	.when('/accounts/register', {
-		templateUrl: 'templates/register.html',
-		controller: 'RegisterController'
-	});
+	.when('/profile', {
+		templateUrl: 'templates/profile.html',
+		controller: 'ProfileController'
+	})
+
+	.when('/contact', {
+		templateUrl: 'templates/contact.html',
+		controller: 'ContactController'
+	})
+
+	.when('/media', {
+		templateUrl: 'templates/media.html',
+		controller: 'MediaController'
+	});	
 });

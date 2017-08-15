@@ -1,3 +1,6 @@
+
+console.log("reading in swanage array");
+
 //create the Swanage gallery array
 swanageGallery = [{
 		src: "img/Swanage/Swanage1.jpg",
