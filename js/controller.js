@@ -14,228 +14,73 @@ angular.module('RouteControllers', [])
         $scope.title = "Welcome to Angular - Media Page";
 
 
-        document.getElementById("nextPhotoBtnLg").disabled = true;
-        document.getElementById("previousPhotoBtnLg").disabled = true;
+        //Putting on global scope to share with view
+        $scope.placeName;       //Location photographs taken, user interaction sets first vlue
+        $scope.currentImage;    //Pointer to current img, user interaction sets first vlue
+
+        $scope.disableNavigation = "true";
+
+        $scope.swanageImgCount = 0;
+        $scope.fleetImgCount = 0;
+        $scope.caesarsCampImgCount = 0;
 
 
+        //This is for the disabling of the previous/next until a button is pressed
+        //https://stackoverflow.com/questions/34621350/how-can-i-disable-other-buttons-when-i-press-one-button-in-angularjs
 
 
-
-                LocalUsers.fetch().then(function(results) {
-                    //*******************************************************************
-                    //DO I NEED TO USE SCOPE HERE AS I AM NOT PASSING VALUES TO TEMPLATE?
-                    var album = results.data;
-                    //*******************************************************************
-
-                    //To list all photos
-                    for (i=0; i<album.length; i++){
-                            console.log(album[i].place);                        
-                        for (j=0; j<album[i].photos.length; j++){
-                            console.log(album[i].photos[j].src);
-                        }
-                    }
-
-
-                        /*
-                        console.log($scope.registrationUser.username);                        
-                        if (entry.name == $scope.registrationUser.username){
-                            console.log("Name match on: " + entry.name + " and " + $scope.registrationUser.username);
-                        }
-                        if (entry.password == $scope.registrationUser.password){
-                            console.log("Password match on: " + entry.password + " and " + $scope.registrationUser.password);
-                        }
-                        */
-                        //else                        
-                        //    console.log("No match made");                            
-                });
-
-
-
-
-
-        //create the Swanage gallery array
-        swanageGallery = [{
-                src: "img/Swanage/Swanage1.jpg",
-                alt: "Swanage: Sea with coast in distance"
-            },
-
-            {
-                src: "img/Swanage/Swanage2.jpg",
-                alt: "Swanage: Island at Sunset no.1"
-            },
-
-            {
-                src: "img/Swanage/Swanage3.jpg",
-                alt: "Swanage:  Island at Sunset no.2"
-            },
-
-            {
-                src: "img/Swanage/Swanage4.jpg",
-                alt: "Swanage: Island in distance bright sun"
-            },
-
-            {
-                src: "img/Swanage/Swanage5.jpg",
-                alt: "Swanage: Coastal cliffs with sea"
-            },
-
-            {
-                src: "img/Swanage/Swanage6.jpg",
-                alt: "Swanage: Coastal cliffs inland"
-            },
-
-            {
-                src: "img/Swanage/Swanage7.jpg",
-                alt: "Swanage: Bay from up high no.1"
-            },
-
-            {
-                src: "img/Swanage/Swanage8.jpg",
-                alt: "Swanage: Bay from up high no.2"
-            },
-
-            {
-                src: "img/Swanage/Swanage9.jpg",
-                alt: "Swanage: Coastal view with bench"
-            },
-
-            {
-                src: "img/Swanage/Swanage10.jpg",
-                alt: "Swanage: High up long coastal view"
-            },
-
-            {
-                src: "img/Swanage/Swanage11.jpg",
-                alt: "Swanage: Sea view with clouds"
+        incImgCount= function(location){
+            if (location == swanage){
+                if (swanageImgCount == swanageImgCount.length){
+                    swanageImgCount = 0;
+                }
+                else{
+                    swanageImgCount = swanageImgCount + 1;                    
+                }
             }
-        ];
-
-        //create the Fleet Gallery array
-        fleetGallery = [{
-                src: "img/Fleet/FleetPond1.jpg",
-                alt: "Fleet: Forrest in sun"
-            },
-
-            {
-                src: "img/Fleet/FleetPond2.jpg",
-                alt: "Fleet: Bridge over pond"
-            },
-
-            {
-                src: "img/Fleet/FleetPond3.jpg",
-                alt: "Fleet: Close up cobweb"
-            },
-
-            {
-                src: "img/Fleet/FleetPond4.jpg",
-                alt: "Fleet: Pond through trees no.1"
-            },
-
-            {
-                src: "img/Fleet/FleetPond5.jpg",
-                alt: "Fleet: Pond at sunset"
-            },
-
-            {
-                src: "img/Fleet/FleetPond6.jpg",
-                alt: "Fleet: Pond at sunset with sun showing"
-            },
-
-            {
-                src: "img/Fleet/FleetPond7.jpg",
-                alt: "Fleet: Pond viewing position"
-            },
-
-            {
-                src: "img/Fleet/FleetPond8.jpg",
-                alt: "Fleet: Pond through trees no.2"
-            },
-
-            {
-                src: "img/Fleet/FleetPond9.jpg",
-                alt: "Fleet: Close of up leaves"
-            },
-
-            {
-                src: "img/Fleet/FleetPond10.jpg",
-                alt: "Fleet: Stream in summer"
-            },
-
-            {
-                src: "img/Fleet/FleetPond11.jpg",
-                alt: "Fleet: Waterlogged in spring"
+            else if (location == fleet){
+                if (fleetImgCount == fleetImgCount.length){
+                    fleetImgCount = 0;
+                }
+                else{
+                    fleetImgCount = fleetImgCount + 1;                    
+                }                
             }
-        ];
+            else if (location == caesarsCamp){
+                if (caesarsCampImgCount == caesarsCampImgCount.length){
+                    caesarsCampImgCount = 0;
+                }
+                else{
+                    caesarsCampImgCount = caesarsCampImgCount + 1;                    
+                }
+            }            
+        };
 
 
 
-        //create the Caesars Camp gallery array
-        caesarsCampGallery = [{
-                src: "img/CaesarsCamp/CaesarsCamp1.jpg",
-                alt: "Caesars Camp: Sunset view no.1"
-            },
+        setImage = function(placename, imageCycle){
+            //Set by referencing the photo and image cycle
+            $scope.currentImage = album[placename].photo[imageCycle].src;
+        };
 
-            {
-                src: "img/CaesarsCamp/CaesarsCamp2.jpg",
-                alt: "Caesars Camp: Sunset view no.1"
-            },
 
-            {
-                src: "img/CaesarsCamp/CaesarsCamp3.jpg",
-                alt: "Caesars Camp: Sunset view with tree"
-            },
 
-            {
-                src: "img/CaesarsCamp/CaesarsCamp4.jpg",
-                alt: "Caesars Camp: Hill side view"
-            },
+        //Pull in the data from a json file, ideally this would be data from an API but as replicating other site, json file used
+        LocalUsers.fetch().then(function(results) {
+            var album = results.data;
 
-            {
-                src: "img/CaesarsCamp/CaesarsCamp5.jpg",
-                alt: "Caesars Camp: High up view over trees"
-            },
+            for (i = 0; i < album.length; i++) {
+                console.log(album[i].place);
+                //if place == variable
 
-            {
-                src: "img/CaesarsCamp/CaesarsCamp6.jpg",
-                alt: "Caesars Camp: High up view over low land"
-            },
 
-            {
-                src: "img/CaesarsCamp/CaesarsCamp7.jpg",
-                alt: "Caesars Camp: High up with top of hill in shot"
-            },
+                for (j = 0; j < album[i].photos.length; j++) {
+                    console.log(album[i].photos[j].src);
+                }
 
-            {
-                src: "img/CaesarsCamp/CaesarsCamp8.jpg",
-                alt: "Caesars Camp: High up looking over purple and green"
-            },
-
-            {
-                src: "img/CaesarsCamp/CaesarsCamp9.jpg",
-                alt: "Caesars Camp: Autumnal hillside view"
-            },
-
-            {
-                src: "img/CaesarsCamp/CaesarsCamp10.jpg",
-                alt: "Caesars Camp: Autumnal view over trees"
-            },
-
-            {
-                src: "img/CaesarsCamp/CaesarsCamp11.jpg",
-                alt: "Caesars Camp: Autumnal path back down"
+                //break
             }
-        ];
-
-
-
-        // No functions need to be returned because the html page (or any other JS) doesn't call any, this module runs on page load, then 
-        // listens for events, the page doesn't invoke any itself.
-
-        console.log("inside media function inside Controller!");
-
-        $scope.swanageCount = 0;
-        $scope.fleetCount = 0;
-        $scope.caesarsCampCount = 0;
+        });
 
         //Set flag to manage state of next/previous buttons (rather than executing) 
         //command to set disabled to false every mouse click. See function 
