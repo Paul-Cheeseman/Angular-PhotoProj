@@ -5,13 +5,11 @@ angular.module('UserStoreService', [])
     .factory('LocalUserStore', function($http) {
 
         LocalUsers = {
-            fetch: function(data, file) {
-               return $http.get(file);
+            fetch: function(data) {
+               return $http.get('js/photos.json');
             }
         };
         return LocalUsers;
-
-
     });
 
 
