@@ -15,71 +15,83 @@ angular.module('RouteControllers', [])
 
 
         //Putting on global scope to share with view
-        $scope.placeName;       //Location photographs taken, user interaction sets first vlue
-        $scope.currentImage;    //Pointer to current img, user interaction sets first vlue
+        $scope.placeName; //Location photographs taken, user interaction sets first vlue
+        $scope.currentImage = "img/initialPhotoViewerPic.jpg"; //Pointer to current img, user interaction sets first vlue
 
-        $scope.disableNavigation = "true";
+        $scope.disableNavigation = true;
 
-        $scope.swanageImgCount = 0;
-        $scope.fleetImgCount = 0;
-        $scope.caesarsCampImgCount = 0;
+        var swanageImgCount = 0;
+        var fleetImgCount = 0;
+        var caesarsCampImgCount = 0;
 
+        var album;
+        var photoNum;
 
         //This is for the disabling of the previous/next until a button is pressed
         //https://stackoverflow.com/questions/34621350/how-can-i-disable-other-buttons-when-i-press-one-button-in-angularjs
 
 
-        incImgCount= function(location){
-            if (location == swanage){
-                if (swanageImgCount == swanageImgCount.length){
-                    swanageImgCount = 0;
-                }
-                else{
-                    swanageImgCount = swanageImgCount + 1;                    
+        $scope.setNewPic = function(location) {
+            $scope.disableNavigation = false;
+
+            for (i = 0; i < album.length; i++) {
+                if (album[i].place == location) {
+                    if (album[i].place == "swanage") {
+                        if (swanageImgCount == album[i].photos.length) {
+                            swanageImgCount = 0;
+                        }
+                        $scope.currentImage = album[i].photos[swanageImgCount].src;
+                        $scope.currentCaption = album[i].photos[swanageImgCount].alt;
+                        swanageImgCount = swanageImgCount + 1;
+
+
+                    } else if (album[i].place == "fleet") {
+                        if (fleetImgCount == album[i].photos.length) {
+                            fleetImgCount = 0;
+                        }
+                        $scope.currentImage = album[i].photos[fleetImgCount].src;
+                        $scope.currentCaption = album[i].photos[fleetImgCount].alt;
+                        fleetImgCount = fleetImgCount + 1;
+
+
+
+                    } else if (album[i].place == "caesarsCamp") {
+                        if (caesarsCampImgCount == album[i].photos.length) {
+                            caesarsCampImgCount = 0;
+                        }
+                        $scope.currentImage = album[i].photos[caesarsCampImgCount].src;
+                        $scope.currentCaption = album[i].photos[caesarsCampImgCount].alt;                        
+                        caesarsCampImgCount = caesarsCampImgCount + 1;
+                    }
+                    //prevent any unnecessary looping
+                    break;
                 }
             }
-            else if (location == fleet){
-                if (fleetImgCount == fleetImgCount.length){
-                    fleetImgCount = 0;
-                }
-                else{
-                    fleetImgCount = fleetImgCount + 1;                    
-                }                
-            }
-            else if (location == caesarsCamp){
-                if (caesarsCampImgCount == caesarsCampImgCount.length){
-                    caesarsCampImgCount = 0;
-                }
-                else{
-                    caesarsCampImgCount = caesarsCampImgCount + 1;                    
-                }
-            }            
-        };
-
-
-
-        setImage = function(placename, imageCycle){
-            //Set by referencing the photo and image cycle
-            $scope.currentImage = album[placename].photo[imageCycle].src;
+            console.log($scope.currentImage);
+            console.log($scope.currentCaption);            
         };
 
 
 
         //Pull in the data from a json file, ideally this would be data from an API but as replicating other site, json file used
         LocalUsers.fetch().then(function(results) {
-            var album = results.data;
+            album = results.data;
 
+            /*
             for (i = 0; i < album.length; i++) {
                 console.log(album[i].place);
                 //if place == variable
 
 
                 for (j = 0; j < album[i].photos.length; j++) {
+                    //load into own albums
+
                     console.log(album[i].photos[j].src);
                 }
 
                 //break
             }
+            */
         });
 
         //Set flag to manage state of next/previous buttons (rather than executing) 

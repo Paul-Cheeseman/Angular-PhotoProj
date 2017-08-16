@@ -25,24 +25,24 @@
 						<div class="mediaPageBackgrounds">
 
 						<figure>
-							<img id="myImg" src="img/initialPhotoViewerPic.jpg" alt="Cover Picture pre photo location selection">
+							<img id="myImg" src={{currentImage}} alt={{currentCaption}}>
 						</figure>
 						<!-- Bespoke class added to apply margin around bootstrap buttons -->
 						<div class="btn-space">  
 							
-							<button id="previousPhotoBtnLg" ng-model="button" class="btn btn-default hidden-xs hidden-sm" ng-disabled="{{disableNavigation}}">Previous Photo</button>	
+							<button id="previousPhotoBtnLg" ng-model="button" class="btn btn-default hidden-xs hidden-sm" ng-disabled="disableNavigation">Previous Photo</button>	
 
 
-							<button id="nextPhotoBtnLg"  class="btn btn-default hidden-xs hidden-sm" ng-disabled="{{disableNavigation}}">Next Photo</button>
-							<button id="previousPhotoBtnSm" class="glyphicon glyphicon-chevron-left hidden-md hidden-lg" ng-disabled="{{disableNavigation}}"></button>	
-							<button id="nextPhotoBtnSm" class="glyphicon glyphicon-chevron-right hidden-md hidden-lg" ng-disabled="{{disableNavigation}}"></button>
+							<button id="nextPhotoBtnLg"  class="btn btn-default hidden-xs hidden-sm" ng-disabled="disableNavigation">Next Photo</button>
+							<button id="previousPhotoBtnSm" class="glyphicon glyphicon-chevron-left hidden-md hidden-lg" ng-disabled="disableNavigation"></button>	
+							<button id="nextPhotoBtnSm" class="glyphicon glyphicon-chevron-right hidden-md hidden-lg" ng-disabled="disableNavigation"></button>
 						</div>
 						<!-- Bespoke class added to apply margin around bootstrap buttons -->
 
 						<div class="btn-space">
-							<button id="fleetBtnLg" class="btn btn-default hidden-xs hidden-sm">Fleet Photos</button>
-							<button id="swanageBtnLg" class="btn btn-default hidden-xs hidden-sm">Swanage Photos</button>	
-							<button id="caesarsCampBtnLg" class="btn btn-default hidden-xs hidden-sm">Caesars Camp</button>	
+							<button id="fleetBtnLg" class="btn btn-default hidden-xs hidden-sm" ng-click="setNewPic('fleet')">Fleet Photos</button>
+							<button id="swanageBtnLg" class="btn btn-default hidden-xs hidden-sm" ng-click="setNewPic('swanage')">Swanage Photos</button>	
+							<button id="caesarsCampBtnLg" class="btn btn-default hidden-xs hidden-sm" ng-click="setNewPic('caesarsCamp')">Caesars Camp</button>	
 							<!-- Span used to apply CSS font changes for small devices to each options displayed name -->
 							<!-- Radio buttons for small device use -->
 							<label class="radio-inline hidden-md hidden-lg">
