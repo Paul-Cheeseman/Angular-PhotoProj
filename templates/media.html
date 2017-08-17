@@ -25,24 +25,24 @@
 						<div class="mediaPageBackgrounds">
 
 						<figure>
-							<img id="myImg" src={{currentImage}} alt={{currentCaption}}>
+							<img id="myImg" src={{currentImage}} alt={{currentCaption}} ng-click="modalLaunch()">
 						</figure>
 						<!-- Bespoke class added to apply margin around bootstrap buttons -->
 						<div class="btn-space">  
 							
-							<button id="previousPhotoBtnLg" ng-model="button" class="btn btn-default hidden-xs hidden-sm" ng-disabled="disableNavigation">Previous Photo</button>	
+							<button id="previousPhotoBtnLg" ng-model="button" class="btn btn-default hidden-xs hidden-sm" ng-disabled="disableNavigation"  ng-click="setNewPic('backwards')">Previous Photo</button>	
 
 
-							<button id="nextPhotoBtnLg"  class="btn btn-default hidden-xs hidden-sm" ng-disabled="disableNavigation">Next Photo</button>
-							<button id="previousPhotoBtnSm" class="glyphicon glyphicon-chevron-left hidden-md hidden-lg" ng-disabled="disableNavigation"></button>	
-							<button id="nextPhotoBtnSm" class="glyphicon glyphicon-chevron-right hidden-md hidden-lg" ng-disabled="disableNavigation"></button>
+							<button id="nextPhotoBtnLg"  class="btn btn-default hidden-xs hidden-sm" ng-disabled="disableNavigation" ng-click="setNewPic('forwards')">Next Photo</button>
+							<button id="previousPhotoBtnSm" class="glyphicon glyphicon-chevron-left hidden-md hidden-lg" ng-disabled="disableNavigation" ng-click="setNewPic('backwards')"></button>	
+							<button id="nextPhotoBtnSm" class="glyphicon glyphicon-chevron-right hidden-md hidden-lg" ng-disabled="disableNavigation" ng-click="setNewPic('forwards')"></button>
 						</div>
 						<!-- Bespoke class added to apply margin around bootstrap buttons -->
 
 						<div class="btn-space">
-							<button id="fleetBtnLg" class="btn btn-default hidden-xs hidden-sm" ng-click="setNewPic('fleet')">Fleet Photos</button>
-							<button id="swanageBtnLg" class="btn btn-default hidden-xs hidden-sm" ng-click="setNewPic('swanage')">Swanage Photos</button>	
-							<button id="caesarsCampBtnLg" class="btn btn-default hidden-xs hidden-sm" ng-click="setNewPic('caesarsCamp')">Caesars Camp</button>	
+							<button id="fleetBtnLg" class="btn btn-default hidden-xs hidden-sm" ng-click="initialiseNewPic('fleet')">Fleet Photos</button>
+							<button id="swanageBtnLg" class="btn btn-default hidden-xs hidden-sm" ng-click="initialiseNewPic('swanage')">Swanage Photos</button>	
+							<button id="caesarsCampBtnLg" class="btn btn-default hidden-xs hidden-sm" ng-click="initialiseNewPic('caesarsCamp')">Caesars Camp</button>	
 							<!-- Span used to apply CSS font changes for small devices to each options displayed name -->
 							<!-- Radio buttons for small device use -->
 							<label class="radio-inline hidden-md hidden-lg">
@@ -56,11 +56,11 @@
 						</div>
 					</div>
 					<!-- The (Initially Hidden) Modal -->
-					<div id="myModal" class="modal">
-	  					<span id="modalClose" class="close">x</span>
-	  					<!-- src needed below for W3C validation but causes page load error (can't find source) so put in initialPic but it is never seen as JS controls image displayed -->
-  						<img class="modal-content" id="currentPhoto" src="img/initialPhotoViewerPic.jpg" alt="Modal used to display photos">
-  						<div id="caption"></div>
+					<div id="myModal" ng-style="modalAppear">
+	  					<span id="modalClose" class="close" ng-click="modalClose()">x</span>
+
+  						<img class="modal-content" id="currentPhoto" src={{currentImage}} alt="current photo being shown in modal">
+  						<div id="caption">{{currentCaption}}</div>
 					</div>
 				</div>
 			</div>	
