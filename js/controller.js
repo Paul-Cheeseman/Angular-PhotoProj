@@ -174,13 +174,17 @@ angular.module('RouteControllers', [])
 
     .controller('ContactController', function($scope, LocalUserStore) {
 
+
         $scope.submitForm = function() {
             console.log("Form Submitted");
 
             console.log("hello");
+
+            pattern = /^([^0-9]*)[A-Za-z]{2,}$/;
+
             var str = $scope.contactForm.firstName;
             console.log(str.$modelValue);
-            if (/a/.test(str.$modelValue)) {
+            if (pattern.test(str.$modelValue)) {
                 console.log("match!");
             }
 
