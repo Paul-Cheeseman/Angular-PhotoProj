@@ -175,55 +175,45 @@ angular.module('RouteControllers', [])
     .controller('ContactController', function($scope, LocalUserStore) {
 
 
+            var nameRexEx;
+            var nameStr;
+            var emailRegEx;
+            var emailStr;
+
         $scope.submitForm = function() {
-            console.log("Form Submitted");
 
-            console.log("hello");
 
-            pattern = /^([^0-9]*)[A-Za-z]{2,}$/;
 
-            var str = $scope.contactForm.firstName;
-            console.log(str.$modelValue);
-            if (pattern.test(str.$modelValue)) {
-                console.log("match!");
-            }
-
+            console.log($scope.contactForm.firstName);
 
             /*
-            var firstNameStr = $scope.user.firstName;
-            var lastNameStr = $scope.user.lastName;
-            var emailStr = $scope.user.email;
-            var startDateStr = $scope.user.startDate;
-            var phoneStr = $scope.user.phone;
-
-
-
-            if (firstNameStr.test("")) {
-
-            }
-    
-    
-
-
-
-            //$scope.regex = '/^([A-Za-z]{2,})/';
-
-
-            //If the first two characters are upper of lower case 
-            str = $scope.contactForm.user.firstName;
-            if (/^([A-Za-z]{2,})/.test(str)) {
-                console.log("match!");
-            }
-
-            /*
-            if (/^[A-Za-z]{2,}/.test($scope.contactForm.firstName)) {
-                console.log("pass");
-                //$scope.contactForm.user.firstName = "blah";
+            if ($scope.contactForm.firstName.$modelValue == undefined){
+                console.log("undefined");
             }
             */
+
+            //Name RegEx for form validation
+            nameRexEx = /^([^0-9]*)[A-Za-z]{2,}$/;
+            nameStr = $scope.contactForm.firstName;
+            //Need undefined below as it is included as a legitimate match in the A-Za-z regex so triggers if nothing in form
+            if (nameRexEx.test(nameStr.$modelValue) && nameStr.$modelValue != undefined) {
+
+                console.log("name match!");
+            }
+
+
+            //Email regex
+            emailRegEx = /[^\s@]+@[^\s@]+\.[^\s@]+/;
+            emailStr = $scope.contactForm.email;
+            if (emailRegEx.test(emailStr.$modelValue)) {
+                console.log("email match!");
+            }
+
+
+
             //check each component of form
-            console.log("First Name: " + $scope.user.firstName);
-            console.log("Last Name: " + $scope.user.lastName);
+            //console.log("First Name: " + $scope.user.firstName);
+            //console.log("Last Name: " + $scope.user.lastName);
             //console.log(contactForm.user.firstName);
 
             //Finish with, details in correct format entered
