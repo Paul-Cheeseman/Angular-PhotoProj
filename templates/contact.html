@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label>First Name:</label>
                     <input type="text" name="firstName" class="form-control" data-ng-model="user.firstName" ng-pattern="nameRexEx">
-                    <p data-ng-show="contactForm.firstName.$pristine" class="help-block">Your first name is required</p>
+                    <p data-ng-show="contactForm.firstName.$pristine" class="help-block">{{firstNametext}}</p>
                 </div>
 
                 <div class="form-group">
@@ -38,21 +38,23 @@
                 <div class="form-group">
                     <label>Start Date of Project:</label>
                     <input type="text" name="startDate" class="form-control" data-ng-model="user.startDate">
-                    <p data-ng-show="contactForm.startDate.$pristine" class="help-block">A start date is required</p>
+                    <p data-ng-show="contactForm.startDate.$pristine" class="help-block">{{dateText}}</p>
                 </div>                
 
 
                 <div class="form-group">
                     <label>Phone:</label>
                     <input type="text" name="phone" class="form-control" data-ng-model="user.phone">
-                    <p data-ng-show="contactForm.phone.$pristine" class="help-block">A phone number is required</p>
+                    <p data-ng-show="contactForm.phone.$pristine" class="help-block">An 11 digit phone number is required</p>
                 </div>                
 
-            <button type="submit" class="btn btn-default hidden-xs hidden-sm">Submit</button>
-            <button type="submit" class="btn btn-sm hidden-md hidden-lg">Submit</button>
-			<!-- Below taken out for testing 
             <button type="submit" class="btn btn-default hidden-xs hidden-sm" data-ng-disabled="contactForm.$invalid">Submit</button>
             <button type="submit" class="btn btn-sm hidden-md hidden-lg" data-ng-disabled="contactForm.$invalid">Submit</button>
+
+
+			<!-- Below taken out for testing 
+            <button type="submit" class="btn btn-default hidden-xs hidden-sm">Submit</button>
+            <button type="submit" class="btn btn-sm hidden-md hidden-lg">Submit</button>
             -->
             <p class="trackFontChange" id="formSuccess"></p>
             </form>
@@ -62,8 +64,7 @@
 
 </main>
 </div>
-<script src='https://code.jquery.com/jquery.min.js'></script>
-<script src='bootstrap/js/bootstrap.min.js'></script>
+
 <!-- Site specific js -->
 <script src='js/contactPageJS.js'></script>
 <!-- Getting google map function from within the contacts module -->

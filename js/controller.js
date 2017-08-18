@@ -174,31 +174,38 @@ angular.module('RouteControllers', [])
 
     .controller('ContactController', function($scope, LocalUserStore) {
 
+        $scope.firstNametext = "Your first name is required";
+        $scope.dateText = "A start date with 2 days lead time is required";
 
-            var nameRexEx;
-            var nameStr;
-            var emailRegEx;
-            var emailStr;
+
+        var nameRexEx;
+        var nameStr;
+        var emailRegEx;
+        var emailStr;
 
         $scope.submitForm = function() {
 
-
-
-            console.log($scope.contactForm.firstName);
-
             /*
-            if ($scope.contactForm.firstName.$modelValue == undefined){
-                console.log("undefined");
-            }
+            console.log($scope.contactForm);
+            console.log("contact form: " +$scope.contactForm.$invalid);
+            console.log("form: " +$scope.contactForm.$pristine);
+            console.log("first: " +$scope.contactForm.firstName.$pristine);
+            console.log("second: " +$scope.contactForm.lastName.$pristine);            
+            console.log("email: " +$scope.contactForm.email.$pristine);
+            console.log("start date: " +$scope.contactForm.startDate.$pristine);
+            console.log("phone: " +$scope.contactForm.phone.$pristine);          
             */
 
             //Name RegEx for form validation
-            nameRexEx = /^([^0-9]*)[A-Za-z]{2,}$/;
-            nameStr = $scope.contactForm.firstName;
+            firstNameRexEx = /^([^0-9]*)[A-Za-z]{2,}$/;
+            firstNameStr = $scope.contactForm.firstName;
             //Need undefined below as it is included as a legitimate match in the A-Za-z regex so triggers if nothing in form
-            if (nameRexEx.test(nameStr.$modelValue) && nameStr.$modelValue != undefined) {
+            if (firstNameRexEx.test(firstNameStr.$modelValue) && firstNameStr.$modelValue != undefined) {
 
-                console.log("name match!");
+                console.log("First name match!");
+            } else {
+
+                $scope.firstNametext = "Please enter your name, it needs to be greater than 2 alphetic characters";
             }
 
 
@@ -207,16 +214,55 @@ angular.module('RouteControllers', [])
             emailStr = $scope.contactForm.email;
             if (emailRegEx.test(emailStr.$modelValue)) {
                 console.log("email match!");
+            } else {
+                $scope.emailText = "Incorrect email format, please re-enter";
             }
 
 
 
-            //check each component of form
-            //console.log("First Name: " + $scope.user.firstName);
-            //console.log("Last Name: " + $scope.user.lastName);
-            //console.log(contactForm.user.firstName);
 
-            //Finish with, details in correct format entered
+            //receive date
+            //change / to -
+            //create new monment date object
+            //check to see if its valid
+
+            //Rather than using Regex (which would become quite complex) using moment library to check date is valid
+            var dateOK = moment($scope.contactForm.startDate.$modelValue, "DD/MM/YYYY");
+            //Amount of gap between current date and requested start date
+            var leadTime = 2;
+
+            if (dateOK.isValid()) {
+                //Date with lead time
+                var leadTimeDate = moment().add(leadTime, 'days');
+                var currentDate = moment($scope.contactForm.startDate.$modelValue, "DD/MM/YYYY");
+                if (currentDate >= leadTimeDate) {
+                    console.log("Its a goer!");
+                } else {
+                    console.log("No chance winkle!");
+                }
+
+            } else {
+                $scope.dateText = "Incorrect date - Ensure it's valid and entered as DD/MM/YYYY";
+            }
+
+
+
+
+
+
+            //Phone regex - 11 seems to be mobile/landline length
+            phoneRegEx = /(^[A-Za-z]*)[0-9]{11}$/;
+            phoneStr = $scope.contactForm.phone;
+            if (phoneRegEx.test(phoneStr.$modelValue)) {
+                console.log("phone match!");
+            } else {
+                $scope.phoneText = "Incorrect email format, please re-enter";
+            }
+            /*
+            viewModel.data = {};
+            $scope.contactForm.$setUntouched();
+            $scope.contactForm.$setPristine();
+            */
 
 
         };

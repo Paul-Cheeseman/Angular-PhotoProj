@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Paul-Cheeseman/Angular-PhotoProj/issues"
   },
-  "homepage": "https://github.com/Paul-Cheeseman/Angular-PhotoProj#readme"
+  "homepage": "https://github.com/Paul-Cheeseman/Angular-PhotoProj#readme",
+  "dependencies": {
+    "moment": "^2.18.1"
+  }
 }
