@@ -185,10 +185,15 @@ angular.module('RouteControllers', [])
         var emailRegEx;
         var emailStr;
 
+        //Text underneath each text box
+        $scope.msgTextColour = {"color": "grey"};
+
 
         $scope.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCv5r-mFuGlcKY1QraqB4LYIAiLbfM5kKE&";
 
         $scope.submitForm = function() {
+
+            var submit = true;
 
             //Name RegEx for form validation
             firstNameRegEx = /^([^0-9]*)[A-Za-z]{2,}$/;
@@ -200,8 +205,9 @@ angular.module('RouteControllers', [])
                 $scope.firstNameText = "";
             } else {
 
+                $scope.msgTextColour = {"color": "red"};
                 $scope.firstNameText = "Please enter your first name, it needs to be at least 2 alphabetic characters";
-
+                submit = false;                
             }
 
 
@@ -215,7 +221,9 @@ angular.module('RouteControllers', [])
                 $scope.lastNameText = "";
             } else {
 
-                $scope.lastNameText = "Please enter your last name, it needs to be at least 2 alphetic characters";
+                $scope.msgTextColour = {"color": "red"};
+                $scope.lastNameText = "Please enter your last name, it needs to be at least 2 alphabetic characters";
+                submit = false;                                
             }
 
 
@@ -226,31 +234,35 @@ angular.module('RouteControllers', [])
                 $scope.emailText = "";
                 //console.log("email match!");
             } else {
+                $scope.msgTextColour = {"color": "red"};                
                 $scope.emailText = "Incorrect email format, please re-enter";
+                submit = false;                
             }
 
 
-
+            startDateRegEx = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/;
+            startDateStr = $scope.contactForm.startDate;
            //Rather than using Regex (which would become quite complex) using moment library to check date is valid
             var dateOK = moment($scope.contactForm.startDate.$modelValue, "DD/MM/YYYY");
             //Amount of gap between current date and requested start date
             var leadTime = 2;
 
 
-            if (dateOK.isValid()) {
+            if (dateOK.isValid() && startDateRegEx.test(startDateStr.$modelValue)) {
                 //Date with lead time
                 var leadTimeDate = moment().add(leadTime, 'days');
                 var currentDate = moment($scope.contactForm.startDate.$modelValue, "DD/MM/YYYY");
                 if (currentDate >= leadTimeDate) {
-                    console.log("Its a goer!");
                     $scope.dateText = "";
                 } else {
-                    console.log("No chance winkle!");
+                    $scope.msgTextColour = {"color": "red"};                    
                     $scope.dateText = "Please ensure the date is " + 2 + " days after current date";
+                    submit = false;                                    
                 }
 
             } else {
                 $scope.dateText = "Incorrect date - Ensure it's valid and entered as DD/MM/YYYY";
+                submit = false;                
             }
 
 
@@ -258,13 +270,18 @@ angular.module('RouteControllers', [])
             phoneRegEx = /(^[A-Za-z]*)[0-9]{11}$/;
             phoneStr = $scope.contactForm.phone;
             if (phoneRegEx.test(phoneStr.$modelValue)) {
-                console.log("phone match!");
                 $scope.phoneText = "";
             } else {
+                $scope.msgTextColour = {"color": "red"};                
                 $scope.phoneText = "Incorrect phone number format, please re-enter 11 digit number";
+                submit = false;                
             }
 
             $scope.contactForm.$setPristine();
+
+            if (submit){
+                window.alert("Msg to show form validated and can be submitted");
+            }
         };
     });
 

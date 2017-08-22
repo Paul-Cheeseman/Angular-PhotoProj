@@ -16,33 +16,34 @@
                 </ng-map>
             </div>
         </header>
+
         <div class="col-xs-12 col-sm-6">
             <!-- Setting function to execute on form sumbit and disabling default HTML5 form validation-->
             <form name="contactForm" data-ng-submit="submitForm()" novalidate>
                 <div class="form-group">
                     <label>First Name:</label>
                     <input type="text" name="firstName" class="form-control" data-ng-model="user.firstName" ng-pattern="nameRegEx">
-                    <p data-ng-show="contactForm.firstName.$pristine" class="help-block">{{firstNameText}}</p>
+                    <p data-ng-show="contactForm.firstName.$pristine" ng-style="msgTextColour" class="help-block">{{firstNameText}}</p>
                 </div>
                 <div class="form-group">
                     <label>Last Name:</label>
                     <input type="text" name="lastName" class="form-control" data-ng-model="user.lastName" ng-pattern="nameRegEx">
-                    <p data-ng-show="contactForm.lastName.$pristine" class="help-block">{{lastNameText}}</p>
+                    <p data-ng-show="contactForm.lastName.$pristine" ng-style="msgTextColour" class="help-block">{{lastNameText}}</p>
                 </div>
                 <div class="form-group">
                     <label>Email:</label>
                     <input type="text" name="email" class="form-control" data-ng-model="user.email" ng-pattern="emailRegEx">
-                    <p data-ng-show="contactForm.email.$pristine" class="help-block">{{emailText}}</p>
+                    <p data-ng-show="contactForm.email.$pristine" ng-style="msgTextColour" class="help-block">{{emailText}}</p>
                 </div>
                 <div class="form-group">
                     <label>Start Date of Project:</label>
-                    <input type="text" name="startDate" class="form-control" data-ng-model="user.startDate">
-                    <p data-ng-show="contactForm.startDate.$pristine" class="help-block">{{dateText}}</p>
+                    <input type="text" name="startDate" class="form-control" data-ng-model="user.startDate" ng-pattern="startDateRegEx">
+                    <p data-ng-show="contactForm.startDate.$pristine" ng-style="msgTextColour" class="help-block">{{dateText}}</p>
                 </div>
                 <div class="form-group">
                     <label>Phone:</label>
                     <input type="text" name="phone" class="form-control" data-ng-model="user.phone">
-                    <p data-ng-show="contactForm.phone.$pristine" class="help-block">{{phoneText}}</p>
+                    <p data-ng-show="contactForm.phone.$pristine" ng-style="msgTextColour" class="help-block">{{phoneText}}</p>
                 </div>
                 <button type="submit" class="btn btn-default hidden-xs hidden-sm" data-ng-disabled="contactForm.$invalid">Submit</button>
                 <button type="submit" class="btn btn-sm hidden-md hidden-lg" data-ng-disabled="contactForm.$invalid">Submit</button>
