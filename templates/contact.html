@@ -9,8 +9,11 @@
         <header class="col-sm-6">
             <h1>Contact Me</h1>
             <P>The form to the right would be used if you wished to contact me regarding work, it validates the input (letting the user know where any errors are) so that I could know the requested start date of the project. I previously used 'would' because the form is not operational yet, it won't send the information anywhere (as we haven't got to that part of the course) so please don't try to contact me through it at the moment.</P>
-            <!-- Embedded as per -->
-            <div id="map">
+            <!-- Using bespoke directive to read in Google Maps -->
+            <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
+                <ng-map zoom="10" center="Fleet, Hampshire">
+                    <marker position="Fleet, Hampshire"></marker>
+                </ng-map>
             </div>
         </header>
         <div class="col-xs-12 col-sm-6">
@@ -18,55 +21,41 @@
             <form name="contactForm" data-ng-submit="submitForm()" novalidate>
                 <div class="form-group">
                     <label>First Name:</label>
-                    <input type="text" name="firstName" class="form-control" data-ng-model="user.firstName" ng-pattern="nameRexEx">
-                    <p data-ng-show="contactForm.firstName.$pristine" class="help-block">{{firstNametext}}</p>
+                    <input type="text" name="firstName" class="form-control" data-ng-model="user.firstName" ng-pattern="nameRegEx">
+                    <p data-ng-show="contactForm.firstName.$pristine" class="help-block">{{firstNameText}}</p>
                 </div>
-
                 <div class="form-group">
                     <label>Last Name:</label>
-                    <input type="text" name="lastName" class="form-control" data-ng-model="user.lastName" ng-pattern="nameRexEx">
-                    <p data-ng-show="contactForm.lastName.$pristine" class="help-block">Your last name is required</p>
-                </div>                
-            
+                    <input type="text" name="lastName" class="form-control" data-ng-model="user.lastName" ng-pattern="nameRegEx">
+                    <p data-ng-show="contactForm.lastName.$pristine" class="help-block">{{lastNameText}}</p>
+                </div>
                 <div class="form-group">
                     <label>Email:</label>
-                    <input type="text" name="email" class="form-control" data-ng-model="user.email"  ng-pattern="emailRexEx">
-                    <p data-ng-show="contactForm.email.$pristine" class="help-block">Your email is required</p>
-                </div>                
-
-
+                    <input type="text" name="email" class="form-control" data-ng-model="user.email" ng-pattern="emailRegEx">
+                    <p data-ng-show="contactForm.email.$pristine" class="help-block">{{emailText}}</p>
+                </div>
                 <div class="form-group">
                     <label>Start Date of Project:</label>
                     <input type="text" name="startDate" class="form-control" data-ng-model="user.startDate">
                     <p data-ng-show="contactForm.startDate.$pristine" class="help-block">{{dateText}}</p>
-                </div>                
-
-
+                </div>
                 <div class="form-group">
                     <label>Phone:</label>
                     <input type="text" name="phone" class="form-control" data-ng-model="user.phone">
-                    <p data-ng-show="contactForm.phone.$pristine" class="help-block">An 11 digit phone number is required</p>
-                </div>                
-
-            <button type="submit" class="btn btn-default hidden-xs hidden-sm" data-ng-disabled="contactForm.$invalid">Submit</button>
-            <button type="submit" class="btn btn-sm hidden-md hidden-lg" data-ng-disabled="contactForm.$invalid">Submit</button>
-
-
-			<!-- Below taken out for testing 
+                    <p data-ng-show="contactForm.phone.$pristine" class="help-block">{{phoneText}}</p>
+                </div>
+                <button type="submit" class="btn btn-default hidden-xs hidden-sm" data-ng-disabled="contactForm.$invalid">Submit</button>
+                <button type="submit" class="btn btn-sm hidden-md hidden-lg" data-ng-disabled="contactForm.$invalid">Submit</button>
+                <!-- Below taken out for testing 
             <button type="submit" class="btn btn-default hidden-xs hidden-sm">Submit</button>
             <button type="submit" class="btn btn-sm hidden-md hidden-lg">Submit</button>
             -->
-            <p class="trackFontChange" id="formSuccess"></p>
+                <p class="trackFontChange" id="formSuccess"></p>
             </form>
         </div>
     </section>
-
-
 </main>
 </div>
-
 <!-- Site specific js -->
 <script src='js/contactPageJS.js'></script>
-<!-- Getting google map function from within the contacts module -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv5r-mFuGlcKY1QraqB4LYIAiLbfM5kKE&callback=contact.initMap">
 </script>

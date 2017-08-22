@@ -1,4 +1,4 @@
-angular.module('PhotoApp', ['ngRoute', 'RouteControllers', 'UserStoreService']);
+angular.module('PhotoApp', ['ngRoute', 'RouteControllers', 'UserStoreService', 'ngMap']);
 
 angular.module('PhotoApp').config(function($locationProvider, $routeProvider) {
 	$locationProvider.html5Mode(true); //Enable href routing without hashes
