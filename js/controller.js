@@ -18,7 +18,7 @@ angular.module('RouteControllers', [])
         $scope.placeName; //Location photographs taken, user interaction sets first value
         $scope.currentImage = "img/initialPhotoViewerPic.jpg"; //Pointer to current img, user interaction sets first vlue
         $scope.disableNavigation = true;
-        $scope.modalAppear = { 'display': "none" };
+        $scope.modalAppear = {'display': "none"};
 
         //Local variables to keep within controller
         var swanageImgCount = 0;
@@ -144,7 +144,6 @@ angular.module('RouteControllers', [])
 
             //Ensures the modal only gets launched when picture in viewer
             if ($scope.disableNavigation === false) {
-
 
                 $scope.modalAppear = {
                     "display": "block",

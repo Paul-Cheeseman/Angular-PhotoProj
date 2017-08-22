@@ -1,24 +1,19 @@
 # Angular ToDo App
 
 ## Overview
+This is a basic website created using the Angular framework, it has a user made photo carousel and a validated contacted form.
 
-### What is this app for?
+The reason for this site is to implement a duplicate site to the stream one project site but using angular to deliver it. The idea was to give me experience of using Angular and also to illustrate to myself the basic concepts of an Model-View-Controller (or MVVC strictly speaking for Angular) approach. 
 
-### What does it do?
-
-### How does it work
 
 ## Features
 
 ### Existing Features
-- None Yet!
+- A user made photo carousel
+- A validating contact form
 
 ### Features Left to Implement
-- User Based Features
-	- Registration
-	- Login
-	- Logout
-
+- None
 
 ## Tech Used
 
