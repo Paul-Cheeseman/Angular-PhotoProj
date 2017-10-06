@@ -3,7 +3,7 @@
 ## Overview
 This is a basic website created using the Angular framework, it has a user made photo carousel and a validated contacted form.
 
-The reason for this site is to implement a duplicate site to the stream one project site but using angular to deliver it. The idea was to give me experience of using Angular and also to illustrate to myself the basic concepts of an Model-View-Controller (or MVVC strictly speaking for Angular) approach. 
+The reason for this site is to implement a duplicate site to the stream one project (a basic website created from HTML, CSS, Bootstrap and JavaScript which can be viewed at https://paul-cheeseman.github.io/Stream1-Project/index.html) but using angular to deliver it. The idea was to give me experience of using Angular and also to illustrate to myself the basic concepts of an Model-View-Controller (or MVVC strictly speaking for Angular) approach.
 
 
 ## Features
@@ -19,7 +19,7 @@ The reason for this site is to implement a duplicate site to the stream one proj
 
 ### Some the tech used includes:
 - [AngularJS](https://angularjs.org/)
-    - We use **AngularJS** to handle page routing, we also use it to make calls to the REST API and build custom directives
+    - We use **AngularJS** to handle page routing
 - [Bootstrap](http://getbootstrap.com/)
     - We use **Bootstrap** to give our project a simple, responsive layout
 - [npm](https://www.npmjs.com/)
