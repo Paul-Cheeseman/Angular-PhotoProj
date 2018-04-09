@@ -16,7 +16,6 @@ angular.module('PhotoApp').config(function($locationProvider, $routeProvider) {
 		templateUrl: 'templates/contact.html',
 		controller: 'ContactController'
 	})
-
 	.when('/media', {
 		templateUrl: 'templates/media.html',
 		controller: 'MediaController'
