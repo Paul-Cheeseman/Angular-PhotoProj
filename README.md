@@ -8,7 +8,7 @@ The reason for this site is to implement a duplicate site to the stream one proj
 ## Features
 
 ### Existing Features
-- A user made photo carousel
+- A user made photo viewer
 - A validating contact form
 
 ### Features Left to Implement
