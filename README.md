@@ -1,7 +1,9 @@
 # Angular ToDo App
 
 ## Overview
-This is a basic website created using the Angular framework, it has a user made photo carousel and a validated contacted form https://paul-cheeseman.github.io/Angular-PhotoProj/. The reason for this site is to implement a duplicate site to the stream one project (a basic website created from HTML, CSS, Bootstrap and JavaScript which can be viewed at https://paul-cheeseman.github.io/Stream1-Project/index.html) but using angular to deliver it. The idea was to give me experience of using Angular and also to illustrate to myself the basic concepts of an Model-View-Controller (or MVVC strictly speaking for Angular) approach.
+This is a basic website created using the Angular framework, it has a user made photo carousel and a validated contacted form https://paul-cheeseman.github.io/Angular-PhotoProj/. 
+
+The reason for this site is to implement a duplicate site to the stream one project (a basic website created from HTML, CSS, Bootstrap and JavaScript which can be viewed at https://paul-cheeseman.github.io/Stream1-Project/index.html) but using angular to deliver it. The idea was to give me experience of using Angular and also to illustrate to myself the basic concepts of an Model-View-Controller (or MVVC strictly speaking for Angular) approach.
 
 ## Features
 
